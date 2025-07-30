@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mobile Addiction Test</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@500;700&family=Tajawal:wght@500;700&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Tajawal', 'Cairo', sans-serif;
+      background: linear-gradient(to right, #004d40 0%, #00796b 100%);
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 30px 20px;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .container {
+      background: #ffffff;
+      max-width: 550px;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+      padding: 35px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 100px;
+      height: 100px;
+      background: #fcb69f;
+      border-radius: 50%;
+      opacity: 0.2;
+    }
+
+    h1 {
+      text-align: center;
+      color: #004d40;
+      margin-bottom: 25px;
+      font-weight: 700;
+    }
+
+    .image-top {
+      width: 100%;
+      margin-bottom: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      animation: popIn 1.5s ease;
+    }
+
+    @keyframes popIn {
+      0% {opacity: 0; transform: scale(0.9);}
+      100% {opacity: 1; transform: scale(1);}
+    }
+
+    .question {
+      margin-bottom: 20px;
+      font-weight: 700;
+      color: #4e342e;
+    }
+
+    .answers {
+      list-style: none;
+      padding: 0;
+      margin: 10px 0 30px 0;
+    }
+
+    .answers li {
+      margin-bottom: 12px;
+    }
+
+    label {
+      cursor: pointer;
+      display: block;
+      padding: 12px 18px;
+      background: #004d401c;
+      border: 2px solid #004d40;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    input[type="radio"]:checked + label {
+      background: #394d49b6;
+      color: white;
+      font-weight: 700;
+      transform: scale(1.03);
+    }
+
+    button {
+      background-color: #004d40;
+      border: none;
+      padding: 14px 25px;
+      width: 100%;
+      font-size: 17px;
+      color: white;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    button:hover {
+      background-color: rgb(71, 65, 63);
+      transform: translateY(-2px);
+    }
+
+    .result {
+      margin-top: 30px;
+      text-align: center;
+      padding: 20px;
+      border-radius: 15px;
+      background: #ffe0b2;
+      color: #bf360c;
+      font-weight: 700;
+      font-size: 18px;
+      white-space: pre-line;
+      display: none;
+      animation: slideUp 0.8s ease-in-out;
+    }
+
+    @keyframes slideUp {
+      from {transform: translateY(20px); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <img class="image-top" src="https://i.imgur.com/VTDZDhB.jpg" alt="Mobile Addiction Illustration" />
+    <h1>Mobile Addiction Test</h1>
+
+    <form id="quiz-form">
+
+      <div class="question">
+        1. How many hours do you spend on your phone daily?
+      </div>
+      <ul class="answers">
+        <li><input type="radio" name="q1" id="q1a1" value="0" /><label for="q1a1">Less than 1 hour</label></li>
+        <li><input type="radio" name="q1" id="q1a2" value="1" /><label for="q1a2">1 to 3 hours</label></li>
+        <li><input type="radio" name="q1" id="q1a3" value="2" /><label for="q1a3">4 to 6 hours</label></li>
+        <li><input type="radio" name="q1" id="q1a4" value="3" /><label for="q1a4">More than 6 hours</label></li>
+      </ul>
+
+      <div class="question">
+        2. Do you feel anxious if you can’t check your phone for a long time?
+      </div>
+      <ul class="answers">
+        <li><input type="radio" name="q2" id="q2a1" value="0" /><label for="q2a1">Never</label></li>
+        <li><input type="radio" name="q2" id="q2a2" value="1" /><label for="q2a2">Sometimes</label></li>
+        <li><input type="radio" name="q2" id="q2a3" value="2" /><label for="q2a3">Often</label></li>
+        <li><input type="radio" name="q2" id="q2a4" value="3" /><label for="q2a4">Always</label></li>
+      </ul>
+
+      <div class="question">
+        3. Do you find it hard to reduce phone usage when you try?
+      </div>
+      <ul class="answers">
+        <li><input type="radio" name="q3" id="q3a1" value="0" /><label for="q3a1">No</label></li>
+        <li><input type="radio" name="q3" id="q3a2" value="1" /><label for="q3a2">A little</label></li>
+        <li><input type="radio" name="q3" id="q3a3" value="2" /><label for="q3a3">Yes</label></li>
+        <li><input type="radio" name="q3" id="q3a4" value="3" /><label for="q3a4">Very hard</label></li>
+      </ul>
+
+      <div class="question">
+        4. Do you often use your phone during meals or social gatherings?
+      </div>
+      <ul class="answers">
+        <li><input type="radio" name="q4" id="q4a1" value="0" /><label for="q4a1">Never</label></li>
+        <li><input type="radio" name="q4" id="q4a2" value="1" /><label for="q4a2">Sometimes</label></li>
+        <li><input type="radio" name="q4" id="q4a3" value="2" /><label for="q4a3">Often</label></li>
+        <li><input type="radio" name="q4" id="q4a4" value="3" /><label for="q4a4">Always</label></li>
+      </ul>
+
+      <div class="question">
+        5. Do you use your phone as the first thing in the morning and last thing at night?
+      </div>
+      <ul class="answers">
+        <li><input type="radio" name="q5" id="q5a1" value="0" /><label for="q5a1">No</label></li>
+        <li><input type="radio" name="q5" id="q5a2" value="1" /><label for="q5a2">Sometimes</label></li>
+        <li><input type="radio" name="q5" id="q5a3" value="2" /><label for="q5a3">Often</label></li>
+        <li><input type="radio" name="q5" id="q5a4" value="3" /><label for="q5a4">Always</label></li>
+      </ul>
+
+      <div class="question">
+        6. Do you lose track of time when using your phone?
+      </div>
+      <ul class="answers">
+        <li><input type="radio" name="q6" id="q6a1" value="0" /><label for="q6a1">Never</label></li>
+        <li><input type="radio" name="q6" id="q6a2" value="1" /><label for="q6a2">Sometimes</label></li>
+        <li><input type="radio" name="q6" id="q6a3" value="2" /><label for="q6a3">Often</label></li>
+        <li><input type="radio" name="q6" id="q6a4" value="3" /><label for="q6a4">Always</label></li>
+      </ul>
+
+      <div class="question">
+        7. Has your phone use affected your work, studies, or relationships?
+      </div>
+      <ul class="answers">
+        <li><input type="radio" name="q7" id="q7a1" value="0" /><label for="q7a1">No</label></li>
+        <li><input type="radio" name="q7" id="q7a2" value="1" /><label for="q7a2">A little</label></li>
+        <li><input type="radio" name="q7" id="q7a3" value="2" /><label for="q7a3">Yes</label></li>
+        <li><input type="radio" name="q7" id="q7a4" value="3" /><label for="q7a4">Significantly</label></li>
+      </ul>
+
+      <button type="submit">Get My Result</button>
+    </form>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('quiz-form');
+    const resultDiv = document.getElementById('result');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const totalQuestions = 7;
+      let answers = [];
+
+      for(let i = 1; i <= totalQuestions; i++) {
+        const val = form['q'+i]?.value;
+        if (!val) {
+          alert('Please answer all questions.');
+          return;
+        }
+        answers.push(+val);
+      }
+
+      const score = answers.reduce((a,b) => a + b, 0);
+
+      let message = '';
+      if(score <= 6) {
+        message = "👏 Excellent! Your phone usage is moderate and under control.";
+      } else if(score <= 15) {
+        message = "📱 You use your phone frequently.. Try to organize your time more.";
+      } else {
+        message = "⚠️ Be careful! Your phone use may be excessive. Try to reduce it and enjoy life's moments.";
+      }
+
+      resultDiv.textContent = `Yor Result: ${score} / 21\n${message}`;
+      resultDiv.style.display = 'block';
+      resultDiv.scrollIntoView({behavior: 'smooth'});
+    });
+  </script>
+
+</body>
+</html>
